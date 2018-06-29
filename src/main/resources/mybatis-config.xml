@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties><!-- 属性 -->
+        <property name="database.driver" value="com.mysql.jdbc.Driver"/>
+        <property name="database.url" value="jdbc:mysql://localhost:3306/ssm?useUnicode=true&amp;characterEncoding=utf8"/>
+        <!-- &amp; 为对 & 的转码，否则插入的中文字符会变成问号-->
+        <property name="database.username" value="root"/>
+        <property name="database.password" value="654321"/>
+    </properties>
+
+    <typeAliases><!-- 别名 -->
+        <typeAlias type="com.xiedcode.ssm.pojo.Role" alias="role"/>
+    </typeAliases>
+
+    <!-- 数据库配置 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${database.driver}"/>
+                <property name="url" value="${database.url}"/>
+                <property name="username" value="${database.username}"/>
+                <property name="password" value="${database.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 映射文件 -->
+    <mappers>
+        <mapper resource="mapper/RoleMapper.xml"/>
+    </mappers>
+</configuration>
